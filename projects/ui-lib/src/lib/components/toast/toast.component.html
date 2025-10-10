@@ -1,0 +1,17 @@
+<div class="toast-container" [ngStyle]="getContainerStyles()" [ngClass]="customClasses.container">
+  <div *ngFor="let toast of toasts" 
+       class="toast" 
+       [ngClass]="customClasses.toast" 
+       [ngStyle]="getToastStyles(toast)"
+       [@fadeInOut]>
+       
+    <div class="toast-icon" [innerHTML]="toast.icon || getDefaultIcon(toast.type)"></div>
+    
+    <div class="toast-content">
+      <strong *ngIf="toast.title">{{ toast.title }}</strong>
+      <p>{{ toast.message }}</p>
+    </div>
+    
+    <button class="toast-close" (click)="closeToast(toast)">✕</button>
+  </div>
+</div>

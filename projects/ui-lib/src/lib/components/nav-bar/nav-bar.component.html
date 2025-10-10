@@ -1,0 +1,26 @@
+<div class="horizontal-menu-container">
+
+  <div class="menu-wrapper" [ngClass]="{'collapsed': isCollapsed}" [ngStyle]="getMenuStyles()">
+
+    <button class="menu-toggle" *ngIf="isMobile" (click)="toggleCollapse()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="menu-items" [ngClass]="{'show': !isCollapsed || !isMobile}">
+      <a *ngFor="let item of menu"
+         [routerLink]="item.router"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact:true}"
+         class="menu-item"
+         [ngClass]="getItemClasses(item)"
+         [ngStyle]="getItemStyles(item)">
+        <span class="icon" [innerHTML]="item.icon"></span>
+        <span class="label" *ngIf="!isCollapsed || !isMobile">{{ item.label }}</span>
+        <span class="badge" *ngIf="item.badge && (!isCollapsed || !isMobile)">{{ item.badge }}</span>
+      </a>
+    </nav>
+  </div>
+
+</div>

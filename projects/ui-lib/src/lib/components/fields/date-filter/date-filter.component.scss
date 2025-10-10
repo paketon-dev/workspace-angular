@@ -1,0 +1,194 @@
+.date-filter-sort {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    background: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.date-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.date-box input {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.date-box input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+.filter-btn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    transition: color 0.3s ease-in-out;
+}
+
+.filter-btn:hover {
+    color: #007bff;
+}
+
+
+.filter-dropdown {
+    margin-top: 10px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    // width: 100%;
+    max-width: 325px;
+    z-index: 999;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.filter-dropdown label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    color: #101010;
+}
+
+.filter-dropdown label:hover {
+    background-color: #e9ecef;
+}
+
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.calendar-container input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calendar-container input[type="date"]:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+.calendar-container span {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.sort-btn {
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    padding: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #666;
+    transition: all 0.3s ease-in-out;
+    margin-left: 8px;
+}
+
+.sort-btn:hover {
+    background: #007bff36;
+    color: white;
+}
+
+
+@media (max-width: 600px) {
+    .date-filter-sort {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .date-box input,
+    .calendar-container input[type="date"],
+    .sort-btn {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .filter-btn {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .filter-dropdown {
+        padding: 12px;
+    }
+
+    .filter-dropdown label {
+        padding: 10px;
+    }
+}
+
+
+.btn-clear-filter{
+    padding: 5px;
+    background: transparent;
+    color: #1b506a;
+    font-size: 13px;
+    border: none;
+    margin-top: 10px;
+
+}
+
+
+
+.input-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .input-container svg {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .input-container input {
+    padding-left: 30px; /* Место для иконки */
+  }
+  
+
+input{
+    color: #101010;
+}
+
+
+

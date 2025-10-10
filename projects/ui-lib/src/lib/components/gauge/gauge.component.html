@@ -1,0 +1,40 @@
+<div class="gauge-wrapper" [style.width.px]="size" [style.height.px]="size">
+  <svg [attr.width]="size" [attr.height]="size">
+    <!-- Фон круга -->
+    <circle
+      [attr.cx]="size/2"
+      [attr.cy]="size/2"
+      [attr.r]="radius"
+      [attr.stroke-width]="strokeWidth"
+      [attr.stroke]="backgroundColor"
+      fill="none"
+    ></circle>
+
+    <!-- Заполненный круг -->
+    <circle
+      [attr.cx]="size/2"
+      [attr.cy]="size/2"
+      [attr.r]="radius"
+      [attr.stroke-width]="strokeWidth"
+      [attr.stroke]="color"
+      fill="none"
+      [attr.stroke-dasharray]="circumference"
+      [attr.stroke-dashoffset]="getStrokeDashOffset()"
+      stroke-linecap="round"
+      [style.transition]="animate ? 'stroke-dashoffset 0.3s ease' : 'none'"
+    ></circle>
+
+    <!-- Текст с процентом -->
+    <text
+      [attr.x]="size/2"
+      [attr.y]="size/2"
+      text-anchor="middle"
+      dominant-baseline="middle"
+      font-size="1.2rem"
+      font-weight="600"
+      fill="#111"
+    >
+      {{ getPercent() }}%
+    </text>
+  </svg>
+</div>

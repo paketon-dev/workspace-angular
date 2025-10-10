@@ -1,0 +1,83 @@
+.progress-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  text-align: center;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  height: 100%;
+  transition: width 0.5s ease-in-out; 
+  transform-origin: left; 
+  transform: scaleX(1); 
+
+  &.animated {
+    animation: pulse 2s infinite; 
+  }
+
+  .progress-label {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+}
+
+@keyframes slideInX {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(var(--scale-x)); } 
+}
+
+@keyframes pulse {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.15);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+.progress-bar.gradient {
+  background: linear-gradient(
+    270deg,
+    #16a34a,
+    #22c55e,
+    #16a34a
+  );
+  background-size: 600% 600%;
+  animation: gradientMove 3s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+.progress-bar.animate-on-load {
+  width: 0%;
+  animation: fillWidth 1s ease-out forwards; 
+}
+
+@keyframes fillWidth {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: var(--target-width); 
+  }
+}

@@ -1,0 +1,29 @@
+<div class="sidebar-container">
+
+    <div class="sidebar" [class.collapsed]="isCollapsed" [ngClass]="customClasses.sidebar"
+        [ngStyle]="getSidebarStyles()">
+        <div class="sidebar-header" [ngClass]="customClasses.header" [ngStyle]="customStyles.header">
+            <span *ngIf="!isCollapsed" class="brand" [ngClass]="customClasses.brand">
+                <img [src]="logoUrl" alt="logo" />
+            </span>
+        </div>
+
+        <nav class="menu">
+            <button *ngFor="let item of menu" class="menu-item" [ngClass]="getItemClasses(item)"
+                [ngStyle]="getItemStyles(item)" [routerLink]="item.router" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <span class="icon" [innerHTML]="item.icon"></span>
+                <span class="label" *ngIf="!isCollapsed && !isMiniSidebar">{{ item.label }}</span>
+                <span *ngIf="item.badge && !isCollapsed && !isMiniSidebar" class="badge">{{ item.badge }}</span>
+            </button>
+        </nav>
+    </div>
+
+    <button class="sidebar-toggle" (click)="toggleCollapse()" [ngClass]="toggleButtonClasses "
+        [ngStyle]="getToggleButtonStyles()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+</div>

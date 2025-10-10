@@ -1,0 +1,24 @@
+<div class="modal-overlay" *ngIf="isOpen" [ngClass]="customClasses.overlay" [ngStyle]="customStyles.overlay"
+  (click)="onOverlayClick($event)">
+  <div class="modal-container" [ngClass]="customClasses.container" [ngStyle]="customStyles.container">
+    <div class="modal-header" [ngClass]="customClasses.header" [ngStyle]="customStyles.header">
+      <h3>{{ title }}</h3>
+      <button class="modal-close" [ngClass]="customClasses.closeButton" (click)="close()">
+        ✕
+      </button>
+    </div>
+
+    <div class="modal-body" [ngClass]="customClasses.body" [ngStyle]="customStyles.body">
+      {{ bodyText }}
+    </div>
+
+
+    <div class="modal-footer" [ngClass]="customClasses.footer" [ngStyle]="customStyles.footer">
+      <button *ngFor="let btn of buttons" [disabled]="btn.disabled" [title]="btn.tooltip || ''"
+        [ngClass]="btn.customClass" [ngStyle]="getButtonStyle(btn)" (click)="btn.action()">
+        <span *ngIf="btn.icon" [innerHTML]="btn.icon"></span>
+        {{ btn.label }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,115 @@
+<div class="container">
+    <div class="controls">
+        <div class="column-toggle">
+            <button class="column-toggle-button" (click)="toggleColVisibility()">
+                Показать/скрыть столбцы
+            </button>
+
+            <div class="column-options" [class.show]="columnsVisible">
+                <label class="custom-select">
+                    <span>Выбрать столбцы</span>
+                    <div class="checkbox-group">
+                        <div *ngFor="let column of columnOptions" class="checkbox-item">
+                            <input type="checkbox" id="{{ column.key }}" [(ngModel)]="columns[column.key]"
+                                (ngModelChange)="toggleColumnVisibility(column.key, $event)" />
+                            <label for="{{ column.key }}">{{ column.label }}</label>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="selected-columns">
+            <span *ngFor="let column of filteredSelectedColumns">
+                {{ getColumnLabel(column) }}
+                <button class="btn-delete-column" (click)="removeColumn(column)">&#10005;</button>
+            </span>
+        </div>
+    </div>
+
+    <div class="products-container">
+        <table class="products-table" *ngIf="isDesktop">
+            <thead>
+                <tr>
+                    <ng-container *ngFor="let column of columnOptions">
+                        <th *ngIf="columns[column.key]">
+                            {{ getColumnLabel(column.key) }}
+                         <div style="display: flex; justify-content: space-between;">
+                        <app-search-filter-sort *ngIf="column.type == 'string'" [filterField]="column.field" [filterType]="1"
+                            (filterChange)="onFilterChange($event)"
+                            (sortChange)="onSortChange($event)" [isVisibleFilter]="column.isFilter">
+                        </app-search-filter-sort>
+
+                        <app-date-filter *ngIf="column.type == 'date'" [filterField]="column.field"
+                            (filterChange)="onFilterChange($event)"
+                            (sortChange)="onSortChange($event)">
+                        </app-date-filter>
+
+                        <app-number-filter *ngIf="column.type == 'number'" [filterField]="column.field"
+                            (filterChange)="onFilterChange($event)"
+                            (sortChange)="onSortChange($event)">
+                        </app-number-filter>
+
+                        <app-uuid-search-filter-sort *ngIf="column.type == 'uuid'" [apiEndpoint]="column.endpoint"
+                            [fieldNames]="''" [enam]="null" [Field]="column.field"
+                            [domain]="domain"
+                            (filterChange)="onFilterChange($event)"
+                            (sortChange)="onSortChange($event)">
+                        </app-uuid-search-filter-sort>
+
+                    </div>
+                        </th>
+                    </ng-container>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td *ngFor="let column of columnOptions">
+                        <ng-container *ngIf="columns[column.key]">
+                            {{ product[column.key] }}
+                        </ng-container>
+                    </td>
+                    <td>
+                        <div class="actions">
+                            <button *ngFor="let action of actions" (click)="action.action(product)">
+                                {{ action.label }}
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="product-cards" *ngIf="!isDesktop">
+            <div class="product-card" *ngFor="let product of products">
+                <div class="product-header">
+                    <img *ngIf="columns['productImageLinks'] && product.productImageLinks && product.productImageLinks.length > 0"
+                        [src]="product.productImageLinks[0]" alt="Product Image" class="product-image" />
+                    <div class="product-main-info">
+                        <h3 class="product-title" *ngIf="columns['fullName']">{{ product.fullName }}</h3>
+                        <p class="product-price" *ngIf="columns['retailPrice']">{{ product.retailPrice }} руб.</p>
+                        <p class="product-description" *ngIf="columns['description']">{{ product.description }}</p>
+                    </div>
+                </div>
+
+                <div class="product-extra-info">
+                    <div *ngFor="let key of objectKeys(columnsConfig)">
+                        <p *ngIf="columnsConfig[key] && product[key]">
+                            <strong>{{ getColumnLabel(key) }}:</strong> {{ product[key] }}
+                        </p>
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <button *ngFor="let action of actions" (click)="action.action(product)">
+                        {{ action.label }}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="loading" class="loading-indicator">
+            <p>Загрузка данных...</p>
+        </div>
+    </div>
+</div>

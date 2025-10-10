@@ -1,0 +1,6 @@
+<div class="progress-wrapper" [ngStyle]="getWrapperStyles()">
+    <div class="progress-bar" [class.animated]="animate || pulse" [class.gradient]="gradient"
+        [ngStyle]="getBarStyles()">
+        <span *ngIf="showLabel" class="progress-label">{{ getLabel() }}</span>
+    </div>
+</div>

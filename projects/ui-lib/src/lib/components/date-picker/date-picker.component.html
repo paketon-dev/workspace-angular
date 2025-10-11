@@ -1,0 +1,22 @@
+<div class="date-picker">
+    <input readonly [placeholder]="placeholder" [value]="value ? value.toLocaleDateString() : ''"
+        (click)="toggleCalendar()" />
+
+    <div class="calendar" *ngIf="showCalendar">
+        <div class="calendar-header">
+            <button (click)="prevMonth()">‹</button>
+            <span>{{ selectedMonth + 1 }}/{{ selectedYear }}</span>
+            <button (click)="nextMonth()">›</button>
+        </div>
+        <div class="calendar-grid">
+            <div class="day-label" *ngFor="let day of ['Вс','Пн','Вт','Ср','Чт','Пт','Сб']">{{ day }}</div>
+            <div *ngFor="let week of weeks" class="week">
+                <div *ngFor="let date of week" class="day" [class.selected]="isSelected(date)"
+                    [class.disabled]="!date || (minDate && date < minDate) || (maxDate && date > maxDate)"
+                    (click)="date && selectDate(date)">
+                    {{ date?.getDate() }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

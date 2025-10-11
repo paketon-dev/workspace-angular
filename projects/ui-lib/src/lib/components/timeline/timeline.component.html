@@ -1,0 +1,13 @@
+<div class="timeline-container" [ngClass]="orientation" @fadeStagger>
+    <div *ngFor="let event of events" class="timeline-item">
+        <div class="timeline-line" [ngStyle]="{ background: event.color || lineColor }"></div>
+        <div class="timeline-dot" [ngStyle]="{ background: event.color || lineColor }">
+            <span *ngIf="event.icon" class="timeline-icon">{{ event.icon }}</span>
+        </div>
+        <div class="timeline-content">
+            <div class="timeline-date">{{ event.date }}</div>
+            <div class="timeline-title">{{ event.title }}</div>
+            <div *ngIf="event.description" class="timeline-desc">{{ event.description }}</div>
+        </div>
+    </div>
+</div>

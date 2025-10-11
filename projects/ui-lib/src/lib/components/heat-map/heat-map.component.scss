@@ -1,0 +1,80 @@
+.heatmap-container {
+  display: inline-block;
+  padding: 16px 20px;
+  font-family: 'Inter', sans-serif;
+  user-select: none;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.heatmap-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-left: 44px;
+}
+
+.corner {
+  width: 40px;
+}
+
+.x-labels {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 8px;
+  justify-content: start;
+}
+
+.x-label {
+  width: 28px;
+  text-align: center;
+  font-size: 11px;
+  color: #4b5563;
+}
+
+.heatmap-body {
+  display: flex;
+}
+
+.y-labels {
+  display: grid;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.y-label {
+  height: 28px;
+  font-size: 11px;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 40px;
+  font-weight: 500;
+}
+
+.grid {
+  display: grid;
+  gap: 8px;
+}
+
+.row {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 8px;
+}
+
+.cell {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  &:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  }
+}

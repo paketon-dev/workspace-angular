@@ -1,0 +1,87 @@
+.date-picker {
+    position: relative;
+    font-family: 'Inter', sans-serif;
+
+    input {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+    }
+
+    .calendar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        margin-top: 4px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        width: 240px;
+        padding: 8px;
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+
+            button {
+                border: none;
+                background: none;
+                cursor: pointer;
+                font-size: 18px;
+            }
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+
+            .day-label {
+                font-size: 10px;
+                text-align: center;
+                color: #6b7280;
+            }
+
+            .week {
+                display: contents;
+
+                .day {
+                    width: 28px;
+                    height: 28px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 12px;
+
+                    &.selected {
+                        background: #3b82f6;
+                        color: white;
+                    }
+
+                    &.disabled {
+                        color: #d1d5db;
+                        cursor: not-allowed;
+                    }
+
+                    &:hover:not(.disabled) {
+                        background: #bfdbfe;
+                    }
+                }
+            }
+        }
+    }
+}

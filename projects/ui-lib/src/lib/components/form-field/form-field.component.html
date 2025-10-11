@@ -1,0 +1,13 @@
+<div class="input-group" [ngClass]="customClass">
+    <label *ngIf="label">{{ label }}</label>
+
+    <div class="input-wrapper">
+        <span *ngIf="iconLeft" class="icon-left">{{ iconLeft }}</span>
+        <input [type]="type" [placeholder]="placeholder" [ngClass]="{ 'invalid': showError }" [formControl]="control"
+            [style.padding-left.px]="iconLeft ? 28 : 12" [style.padding-right.px]="iconRight ? 28 : 12" />
+
+        <span *ngIf="iconRight" class="icon-right">{{ iconRight }}</span>
+    </div>
+
+    <div class="error" *ngIf="showError">{{ errorMessage }}</div>
+</div>

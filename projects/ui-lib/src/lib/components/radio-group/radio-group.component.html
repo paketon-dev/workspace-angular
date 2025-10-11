@@ -1,0 +1,8 @@
+<div class="radio-group">
+    <label *ngFor="let option of options" class="radio-wrapper" [class.disabled]="disabled || option.disabled"
+        (click)="selectOption(option)">
+        <input type="radio" [name]="name" [checked]="isSelected(option)" [disabled]="disabled || option.disabled" />
+        <span class="radio-custom"></span>
+        <span class="radio-label">{{ option.label }}</span>
+    </label>
+</div>

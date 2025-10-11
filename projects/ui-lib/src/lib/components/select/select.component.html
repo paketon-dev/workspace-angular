@@ -1,0 +1,27 @@
+<div class="select-container">
+    <div class="select-input" (click)="toggleDropdown()">
+        <span *ngIf="!value || (multiple && value.length === 0)" class="placeholder">{{ placeholder }}</span>
+        <span *ngIf="multiple && value?.length">
+            {{ getSelectedLabels() }}
+        </span>
+
+        <span *ngIf="!multiple && value">
+            {{ getSelectedLabel() }}
+        </span>
+        <span class="arrow">▾</span>
+    </div>
+
+    <div class="dropdown" *ngIf="showDropdown">
+        <input *ngIf="searchEnabled" type="text" [(ngModel)]="searchTerm" placeholder="Поиск..." class="search" />
+
+        <div *ngFor="let option of filteredOptions" class="option" [class.selected]="isSelected(option)"
+            (click)="selectOption(option)">
+            <input *ngIf="multiple" type="checkbox" [checked]="isSelected(option)" />
+            {{ option.label }}
+        </div>
+
+        <div *ngIf="filteredOptions.length === 0" class="no-results">
+            Ничего не найдено
+        </div>
+    </div>
+</div>

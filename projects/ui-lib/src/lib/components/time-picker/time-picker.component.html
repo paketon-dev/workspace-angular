@@ -1,0 +1,18 @@
+<div class="time-picker">
+    <input readonly [placeholder]="placeholder" [value]="displayValue()" (click)="togglePicker()" />
+
+    <div class="picker-panel" *ngIf="showPicker">
+        <div class="picker-column">
+            <div *ngFor="let h of hours" [class.selected]="value?.hours === h" (click)="selectHour(h)">
+                {{ h | number: '2.0' }}
+            </div>
+        </div>
+
+        <div class="picker-column">
+            <div *ngFor="let m of minutes" [class.selected]="value?.minutes === m" (click)="selectMinute(m)">
+                {{ m | number: '2.0' }}
+            </div>
+        </div>
+
+    </div>
+</div>

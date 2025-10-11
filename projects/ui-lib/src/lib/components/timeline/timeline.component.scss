@@ -1,0 +1,92 @@
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+
+    &.horizontal {
+        flex-direction: row;
+        align-items: flex-start;
+        overflow-x: auto;
+
+        .timeline-item {
+            flex-direction: column;
+            align-items: center;
+            margin-right: 40px;
+            position: relative;
+
+            .timeline-line {
+                position: absolute;
+                height: 4px;
+                width: 100%;
+                top: 18px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .timeline-dot {
+                position: relative;
+                margin-bottom: 8px;
+            }
+        }
+    }
+}
+
+.timeline-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding-left: 30px;
+    width: 100%;
+
+    .timeline-line {
+        position: absolute;
+        left: 10px;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        background: var(--line-color, #d1d5db);
+    }
+
+    .timeline-dot {
+        position: absolute;
+        left: 4px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: white;
+    }
+
+    .timeline-content {
+        background: white;
+        border-radius: 8px;
+        padding: 10px 14px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        width: fit-content;
+        min-width: 200px;
+        width: 100%;
+        margin-bottom: 15px;
+
+        .timeline-date {
+            font-size: 11px;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .timeline-desc {
+            font-size: 13px;
+            color: #4b5563;
+        }
+    }
+}

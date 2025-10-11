@@ -1,0 +1,5 @@
+<label class="checkbox-wrapper" [class.disabled]="disabled">
+  <input type="checkbox" [checked]="checked" (change)="toggle()" [disabled]="disabled" />
+  <span class="checkbox-custom"></span>
+  <span class="checkbox-label">{{ label }}</span>
+</label>

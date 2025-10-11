@@ -1,0 +1,24 @@
+.skeleton-loader {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .skeleton-item {
+        background: linear-gradient(-90deg,
+                #e5e7eb 0%,
+                #f3f4f6 50%,
+                #e5e7eb 100%);
+        background-size: 200% 100%;
+        animation: pulse 1.5s infinite ease-in-out;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}

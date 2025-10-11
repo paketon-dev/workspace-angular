@@ -1,0 +1,23 @@
+<div class="heatmap-container" @fadeIn>
+    <div class="heatmap-header">
+        <div class="corner"></div>
+        <div class="x-labels">
+            <div *ngFor="let x of labelsX" class="x-label">
+                {{ x }}
+            </div>
+        </div>
+    </div>
+    <div class="heatmap-body">
+        <div class="y-labels">
+            <div *ngFor="let y of labelsY" class="y-label">
+                {{ y }}
+            </div>
+        </div>
+        <div class="grid">
+            <div *ngFor="let row of data" class="row">
+                <div *ngFor="let cell of row" class="cell" [ngStyle]="{ 'background-color': getCellColor(cell) }"
+                    [title]="cell"></div>
+            </div>
+        </div>
+    </div>
+</div>

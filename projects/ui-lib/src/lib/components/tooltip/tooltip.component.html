@@ -1,0 +1,11 @@
+<div>
+    <input type="text">
+    <div class="tooltip-wrapper">
+        <ng-content></ng-content>
+        <div class="tooltip-box" *ngIf="visible" [@fadeInOut] [ngClass]="getPositionClass()"
+            [ngStyle]="{ 'max-width': maxWidth }">
+            <div class="tooltip-content" [innerHTML]="content"></div>
+            <div class="tooltip-arrow"></div>
+        </div>
+    </div>
+</div>

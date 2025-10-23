@@ -1,5 +1,3 @@
-import { environment } from "../environment";
-
 
 /**
  * Уровни логирования
@@ -55,8 +53,8 @@ export class Logger {
   /**
    * Отправка логов на сервер (например, Sentry/ELK)
    */
-  private sendToServer(log: LogMessage): void {
-    if (!environment.production) return;
+  private sendToServer(log: LogMessage, environment:string): void {
+    if (!environment) return;
 
     // Здесь может быть HTTP-запрос к API логирования
     // Пример: this.http.post('/api/logs', log).subscribe();
@@ -65,7 +63,7 @@ export class Logger {
   /**
    * Базовый метод логирования
    */
-  private log(level: LogLevel, message: string, data?: any): void {
+  private log(level: LogLevel, message: string, data?: any, environment?:any): void {
     const timestamp = new Date();
     const error = data instanceof Error ? data : null;
     const stack = error?.stack;
@@ -100,15 +98,15 @@ export class Logger {
     }
 
     // Отправка на сервер в production
-    if (level >= LogLevel.ERROR || environment.production) {
-      this.sendToServer(logEntry);
+    if (level >= LogLevel.ERROR || environment) {
+      this.sendToServer(logEntry, environment);
     }
   }
 
   /* Публичные методы для разных уровней логирования */
 
-  public debug(message: string, data?: any): void {
-    if (!environment.production) {
+  public debug(message: string, data?: any, environment?:string): void {
+    if (!environment) {
       this.log(LogLevel.DEBUG, message, data);
     }
   }

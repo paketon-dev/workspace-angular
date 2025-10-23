@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule, NG_VALUE_ACCESSOR, ControlValueAccess
   selector: 'lib-checkbox',
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './checkbox.component.html',
-  styleUrl: './checkbox.component.css',
+  styleUrl: './checkbox.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

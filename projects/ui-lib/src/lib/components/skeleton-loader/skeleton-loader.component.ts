@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   selector: 'lib-skeleton-loader',
   imports: [CommonModule],
   templateUrl: './skeleton-loader.component.html',
-  styleUrl: './skeleton-loader.component.css'
+  styleUrl: './skeleton-loader.component.scss'
 })
 export class SkeletonLoaderComponent {
   /** Количество блоков скелетона */

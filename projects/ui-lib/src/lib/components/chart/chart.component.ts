@@ -23,7 +23,7 @@ export interface ChartData {
   selector: 'lib-chart',
   imports: [CommonModule],
   template: '<canvas #chartCanvas></canvas>',
-  styleUrl: './chart.component.css'
+  styleUrl: './chart.component.scss'
 })
 export class ChartComponent implements OnChanges, AfterViewInit {
 
